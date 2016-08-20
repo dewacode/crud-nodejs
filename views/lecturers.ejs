@@ -1,0 +1,42 @@
+<%- include layouts/header.ejs %>
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <button type="button" class="btn btn-primary" style="width: 100px;" onClick="addLecturer();">Add +</button>
+    <div class="panel-heading">
+        <center>Data Lecturers</center>
+    </div>
+    <!-- Table -->
+    <table class="table table-responsive">
+        <tr>
+            <th width="50px">No</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        <% if(data.length){
+
+        for(var i = 0;i < data.length;i++) { %>
+        <tr>
+            <td><%=(i+1)%></td>
+            <td><%=data[i].name%></td>
+            <td><%=data[i].address%></td>
+            <td><%=data[i].phone%></td>
+            <td><%=data[i].email%></td>
+            <td>
+                <a class="btn btn-success" href="../lecturers/edit/<%=data[i].id%>">Edit</a>
+                <a class="btn btn-danger" href="../lecturers/delete/<%=data[i].id%>">Delete</a>
+            </td>
+        </tr>
+        <% }
+
+        }else{ %>
+        <tr>
+            <td colspan="3">No user</td>
+        </tr>
+        <% } %>
+    </table>
+</div>
+<%- include layouts/footer.ejs %>
